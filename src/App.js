@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom'
 import {BY_CITY, BY_COUNTRY} from './Strings';
 import './App.css';
 import SearchCity from './Components/SearchCity';
+import SearchCountry from './Components/SearchCountry';
 import Population from './Components/Population';
 
 class App extends Component {
@@ -16,7 +17,7 @@ class App extends Component {
 
           <Switch>
             <Route path="/search_by_city" component={SearchCity}/>
-            <Route path="/search_by_country"/>
+            <Route path="/search_by_country" component={SearchCountry}/>
             <Route path="/population/:city" render={props => <Population {...props}/>}/>
             <Route path="/" render={() => 
               <div>

@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 
 class Population extends Component {
-  constructor(props) {
+  /*constructor(props) {
     super(props);
-  }
+  }*/
 
   render() {
     const {location, city} = this.props;
