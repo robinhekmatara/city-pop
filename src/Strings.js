@@ -1,0 +1,6 @@
+const BY_CITY = 'SEARCH_BY_CITY';
+const BY_COUNTRY = 'SEARCH_BY_COUNTRY';
+
+export {
+  BY_CITY, BY_COUNTRY
+};
