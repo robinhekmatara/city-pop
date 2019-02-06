@@ -1,5 +1,3 @@
-
-
 export const filterTop3 = (arr, filter) => {
   let newArr = [];
   console.log(arr);
