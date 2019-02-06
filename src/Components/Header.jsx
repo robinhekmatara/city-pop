@@ -1,7 +1,8 @@
 import React from 'react';
+import '../styles/header.css';
 
 const Header = ({children}) =>
-  <header>
+  <header id="page-header">
     <h1>{children}</h1>
   </header>
 

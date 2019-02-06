@@ -1,5 +1,3 @@
-
-
 form {
   display: flex;
   flex-direction: column;
@@ -7,7 +5,7 @@ form {
 }
 
 form header h2 {
-  margin: 1.5em 0;
+  margin: 1.25em 0;
 }
 
 form h2 {
@@ -17,7 +15,7 @@ form h2 {
 
 form input {
   height: 3em;
-  width: 100%;
+  width: 60%;
   border: .1em solid black;
 }
 
@@ -27,5 +25,5 @@ form button {
   height: 2.5em;
   border-radius: 50%;
   border: .05em solid black;
-  margin-top: 1em;
+  margin-top: .75em;
 }
