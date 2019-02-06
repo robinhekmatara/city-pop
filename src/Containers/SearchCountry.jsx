@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import { Link } from 'react-router-dom';
-import Search from './Search';
+import Search from '../Components/Search';
+import { Redirect } from 'react-router';
 import { BY_COUNTRY, ENTER_COUNTRY, COUNTRY_CODE, CITY_CODE } from '../Strings';
 
 class SearchCountry extends Component {
@@ -42,20 +42,12 @@ class SearchCountry extends Component {
     const { country, cities } = this.state;
 
     if (cities !== null) {
-      console.log(cities);
       return (
-        <div>
-          <p>{country}</p>
-          {cities.map(city =>
-            <div key={city.geonameId}>
-              <Link to={{
-                pathname: `/Population/${city.name}`,
-                state: {population: city.population}
-              }}>{city.name}</Link>
-            </div>
-            )}
-        </div>
-      )
+        <Redirect to={{
+          pathname: `/country/${country}`,
+          state: {cities}
+        }}/>
+      );
     }
 
     return (
@@ -75,9 +67,7 @@ const filterTop3 = (arr, filter) => {
   let newArr = [];
   for (let i = 0; i < arr.length && newArr.length < 3; i++) {
     if (filter(arr[i])) {
-      console.log(arr[i].fcode);
       newArr.push(arr[i]);
-      console.log(i);
     }
   }
 
