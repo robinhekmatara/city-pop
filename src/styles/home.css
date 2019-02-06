@@ -1,24 +1,24 @@
-nav {
+#home {
   margin-top: 3em;
 }
 
-nav ul {
+#home ul {
   list-style: none;
   text-align: center;
   padding: 0;
   margin: 0;
 }
 
-nav a {
+#home a {
   text-decoration: none;
   color: black;
 }
 
-nav li {
+#home li {
   display: inline;
 }
 
-nav div {
+#home div {
   font-size: 1.5rem;
   display: inline-flex;
   justify-content: center;
@@ -30,7 +30,7 @@ nav div {
 }
 
 @media (max-width: 995px) {
-  nav div {
+  #home div {
     margin: .2em 0;
   }
 }

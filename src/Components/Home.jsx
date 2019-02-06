@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { BY_CITY, BY_COUNTRY} from '../Strings';
-import '../styles/nav.css';
+import '../styles/home.css';
 
-const Nav = () =>
-  <nav>
+const Home = () =>
+  <div id="home">
     <ul>
       <li>
         <Link to='/search_by_city'>
@@ -17,6 +17,6 @@ const Nav = () =>
         </Link>
       </li>
     </ul>
-  </nav>
+  </div>
 
-export default Nav;
+export default Home;

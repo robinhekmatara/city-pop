@@ -6,7 +6,7 @@ import SearchCountry from './Containers/SearchCountry';
 import Population from './Components/Population';
 import List from './Components/List';
 import Header from './Components/Header';
-import Nav from './Components/Nav';
+import Home from './Components/Home';
 
 class App extends Component {
   render() {
@@ -21,7 +21,7 @@ class App extends Component {
               <Route path="/search_by_country/:country/:city" render={props => <Population {...props}/>}/>
               <Route path="/search_by_country/:country" render={props => <List {...props}/>}/>
               <Route path="/search_by_country" render={props => <SearchCountry {...props}/>}/>
-              <Route path="/" component={Nav}/>
+              <Route path="/" component={Home}/>
               }/>
             </Switch>
           </main>
