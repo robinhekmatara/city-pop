@@ -13,6 +13,7 @@ form input {
   height: 3em;
   width: 60%;
   border: .05em solid black;
+  text-align: center;
 }
 
 form button {
@@ -22,4 +23,8 @@ form button {
   border-radius: 50%;
   border: .05em solid black;
   margin-top: .75em;
+}
+
+form button:hover {
+  cursor: pointer;
 }
