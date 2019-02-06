@@ -13,3 +13,9 @@
   color: black;
   text-decoration: none;
 }
+
+@media (max-height: 600px) {
+  #page-header {
+    margin-top: 2.5%;
+  }  
+}

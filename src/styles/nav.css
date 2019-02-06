@@ -28,3 +28,9 @@ nav div {
   height: 6em;
   margin: 0 .2em;
 }
+
+@media (max-width: 995px) {
+  nav div {
+    margin: .2em 0;
+  }
+}

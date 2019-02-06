@@ -19,3 +19,15 @@
   color: black;
   text-decoration: none;
 }
+
+@media (max-height: 750px) and (max-width: 900px) {
+  .list-item div {
+    width: 80%;
+  }
+}
+
+@media (max-height: 750px) and (max-width: 700px) {
+  .list-item div {
+    width: 100%;
+  }
+}
