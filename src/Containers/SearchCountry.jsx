@@ -28,10 +28,18 @@ class SearchCountry extends Component {
 
     const { country } = this.state;
 
+    /*
+      Fetch by country
+      Find the first with matching name and that is a country
+      Fetch the locations from country with country code
+      Sort locations in descending order by population and retrive first 3 that are cities
+      Set state.cities to 3 largest cities.
+    */
     getCountry(country)
     .then(list => firstMatchingCountry(list, country))
     .then(country => getCities(country.countryCode))
-    .then(cities => filterTop3(cities, item => item.fcode.includes(CITY_CODE)))
+    .then(places => filterTop3(places.sort((a, b) => b.population - a.population),
+                                            item  => item.fcode.includes(CITY_CODE)))
     .then(top3cities => this.setState({cities: top3cities}))
     .catch(e => {
       this.setState({country: '', cities: null});
