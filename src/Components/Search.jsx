@@ -1,9 +1,12 @@
 import React from 'react';
 import { FaSearch } from 'react-icons/fa';
+import '../styles/search.css';
 
-const Search = ({id, placeholder, label, value, handleChange, handleSubmit}) =>
+const Search = ({id, placeholder, header, value, handleChange, handleSubmit}) =>
   <form onSubmit={handleSubmit}>
-    <label htmlFor={id}>{label}</label>
+    <header>
+      <h2>{header}</h2>
+    </header>
     <input 
       type="text"
       id={id}

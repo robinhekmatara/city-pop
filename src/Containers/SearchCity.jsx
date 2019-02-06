@@ -48,7 +48,7 @@ class SearchCity extends Component {
     return (
       <Search
         id="city"
-        label={BY_CITY}
+        header={BY_CITY}
         placeholder={ENTER_CITY}
         value={city}
         handleChange={this.handleChange}

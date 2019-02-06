@@ -1,0 +1,31 @@
+
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form header h2 {
+  margin: 1.5em 0;
+}
+
+form h2 {
+  font-weight: 400;
+  color: #333;
+}
+
+form input {
+  height: 3em;
+  width: 100%;
+  border: .1em solid black;
+}
+
+form button {
+  background-color: white;
+  width: 2.5em;
+  height: 2.5em;
+  border-radius: 50%;
+  border: .05em solid black;
+  margin-top: 1em;
+}

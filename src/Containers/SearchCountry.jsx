@@ -54,7 +54,7 @@ class SearchCountry extends Component {
     return (
       <Search
         id="country"
-        label={BY_COUNTRY}
+        header={BY_COUNTRY}
         placeholder={ENTER_COUNTRY}
         value={country}
         handleChange={this.handleChange}
