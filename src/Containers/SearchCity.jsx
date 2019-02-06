@@ -37,10 +37,11 @@ class SearchCity extends Component {
 
   render() {
     const { city, population } = this.state;
+    const { location } = this.props;
 
     if (population !== null) {
       return <Redirect to={{
-        pathname: `/population/${city}`,
+        pathname: `${location.pathname}/${city}`,
         state: {population}
       }}/>;
     }

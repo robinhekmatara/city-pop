@@ -16,10 +16,11 @@ class App extends Component {
           <Header>CityPop</Header>
           <main>
             <Switch>
-              <Route path="/search_by_city" component={SearchCity}/>
-              <Route path="/search_by_country" component={SearchCountry}/>
-              <Route path="/population/:city" render={props => <Population {...props}/>}/>
-              <Route path="/country/:country" render={props => <List {...props}/>}/>
+              <Route path="/search_by_city/:city" render={props => <Population {...props}/>}/>
+              <Route path="/search_by_city" render={props => <SearchCity {...props}/>}/>
+              <Route path="/search_by_country/:country/:city" render={props => <Population {...props}/>}/>
+              <Route path="/search_by_country/:country" render={props => <List {...props}/>}/>
+              <Route path="/search_by_country" render={props => <SearchCountry {...props}/>}/>
               <Route path="/" component={Nav}/>
               }/>
             </Switch>

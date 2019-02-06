@@ -12,7 +12,7 @@ const List = ({match, location}) =>
         {location.state.cities.map(item => 
           <div key={item.geonameId} className="list-item">
             <Link to={{
-              pathname: `/Population/${item.name}`,
+              pathname: `${location.pathname}/${item.name}`,
               state: {population: item.population}
             }}>
               <div>
