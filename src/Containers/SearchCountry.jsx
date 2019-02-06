@@ -11,7 +11,8 @@ class SearchCountry extends Component {
     super(props);
 
     this.state = {
-      country: '',
+      searchTerm: '',
+      country: null,
       cities: null,
       loading: false
     };
@@ -21,7 +22,7 @@ class SearchCountry extends Component {
   }
 
   handleChange(event) {
-    this.setState({country: event.target.value});
+    this.setState({searchTerm: event.target.value});
   }
 
   handleSubmit(event) {
@@ -29,7 +30,7 @@ class SearchCountry extends Component {
 
     this.setState({loading: true});
 
-    const { country } = this.state;
+    const { searchTerm } = this.state;
 
     /*
       Fetch by country
@@ -38,26 +39,29 @@ class SearchCountry extends Component {
       Sort locations in descending order by population and retrive first 3 that are cities
       Set state.cities to 3 largest cities.
     */
-    getCountry(country)
-    .then(list => firstMatchingCountry(list, country))
-    .then(country => getCities(country.countryCode))
+    getCountry(searchTerm)
+    .then(list => firstMatchingCountry(list, searchTerm))
+    .then(country => {
+      this.setState({country})
+      return getCities(country.countryCode)
+    })
     .then(places => filterTop3(places.sort((a, b) => b.population - a.population),
                                             item  => item.fcode.includes(CITY_CODE)))
     .then(top3cities => this.setState({cities: top3cities, loading: false}))
     .catch(e => {
-      this.setState({country: '', cities: null, loading: false});
+      this.setState({searchTerm: '', cities: null, loading: false});
       console.log(e);
     });
   }
 
   render() {
-    const { country, cities, loading } = this.state;
+    const { searchTerm, country, cities, loading } = this.state;
     const { location } = this.props;
 
     if (cities !== null) {
       return (
         <Redirect to={{
-          pathname: `${location.pathname}/${country}`,
+          pathname: `${location.pathname}/${country.name}`,
           state: {cities}
         }}/>
       );
@@ -68,7 +72,7 @@ class SearchCountry extends Component {
         id="country"
         header={BY_COUNTRY}
         placeholder={ENTER_COUNTRY}
-        value={country}
+        value={searchTerm}
         loading={loading}
         handleChange={this.handleChange}
         handleSubmit={this.handleSubmit}

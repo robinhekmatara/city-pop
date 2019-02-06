@@ -10,7 +10,8 @@ class SearchCity extends Component {
     super(props);
 
     this.state = {
-      city: '',
+      searchTerm: '',
+      city: null,
       population: null,
       loading: false
     };
@@ -20,29 +21,29 @@ class SearchCity extends Component {
   }
 
   handleChange(event) {
-    this.setState({city: event.target.value});
+    this.setState({searchTerm: event.target.value});
   }
 
   handleSubmit(event) {
     event.preventDefault();
     this.setState({loading: true});
-    const { city } = this.state;
-    getCity(city)
-    .then(list => firstMatchingCity(list, city))
-    .then(city => this.setState({population: city.population, loading: false}))
+    const { searchTerm } = this.state;
+    getCity(searchTerm)
+    .then(list => firstMatchingCity(list, searchTerm))
+    .then(city => this.setState({city, population: city.population, loading: false}))
     .catch(e => {
-      this.setState({city: '', population: null, loading: false});
+      this.setState({city: null, searchTerm: '', population: null, loading: false});
       console.log(e);
     });
   }
 
   render() {
-    const { city, population, loading } = this.state;
+    const { searchTerm, city, population, loading } = this.state;
     const { location } = this.props;
 
     if (population !== null) {
       return <Redirect to={{
-        pathname: `${location.pathname}/${city}`,
+        pathname: `${location.pathname}/${city.name}`,
         state: {population}
       }}/>;
     }
@@ -53,7 +54,7 @@ class SearchCity extends Component {
           id="city"
           header={BY_CITY}
           placeholder={ENTER_CITY}
-          value={city}
+          value={searchTerm}
           loading={loading}
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
