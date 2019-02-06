@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom'
-import {BY_CITY, BY_COUNTRY} from './Strings';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import './App.css';
 import SearchCity from './Containers/SearchCity';
 import SearchCountry from './Containers/SearchCountry';
 import Population from './Components/Population';
-import List from './Components/List'
-import Header from './Components/Header'
+import List from './Components/List';
+import Header from './Components/Header';
+import Nav from './Components/Nav';
 
 class App extends Component {
   render() {
@@ -20,11 +20,7 @@ class App extends Component {
               <Route path="/search_by_country" component={SearchCountry}/>
               <Route path="/population/:city" render={props => <Population {...props}/>}/>
               <Route path="/country/:country" render={props => <List {...props}/>}/>
-              <Route path="/" render={() => 
-                <nav>
-                  <Link to='/search_by_city'>{BY_CITY}</Link>
-                  <Link to='/search_by_country'>{BY_COUNTRY}</Link>
-                </nav>
+              <Route path="/" component={Nav}/>
               }/>
             </Switch>
           </main>
