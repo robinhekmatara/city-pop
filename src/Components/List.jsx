@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { capitalizeSentence } from '../Utils/stringOperations'
 import '../styles/list.css';
 
 const List = ({match, location}) =>
   <div>
     <header className="sub-header">
-      <h2>{capitalize(match.params.country)}</h2>
+      <h2>{capitalizeSentence(match.params.country)}</h2>
     </header>
     <div id="list">
         {location.state.cities.map(item => 
@@ -22,7 +23,5 @@ const List = ({match, location}) =>
         )}
     </div>
   </div>
-
-const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1);
 
 export default List;

@@ -8,8 +8,10 @@ main {
   padding: 0;
 }
 
-.sub-header {
+.sub-header h2 {
   text-align: center;
   margin: 1.5em 0;
+  font-weight: 500;
+  font-size: 1.4rem;
   padding: 0;
 }

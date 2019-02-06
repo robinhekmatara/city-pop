@@ -1,10 +1,11 @@
 import React from 'react';
+import { capitalizeSentence } from '../Utils/stringOperations'
 import '../styles/population.css';
 
 const Population = ({location, match}) =>
   <div>
     <header className="sub-header">
-      <h2>{match.params.city}</h2>
+      <h2>{capitalizeSentence(match.params.city)}</h2>
     </header>
     <div id="population">
       <p>POPULATION</p>
