@@ -4,7 +4,7 @@ import '../styles/search.css';
 
 const Search = ({id, placeholder, header, value, handleChange, handleSubmit}) =>
   <form onSubmit={handleSubmit}>
-    <header>
+    <header className="sub-header">
       <h2>{header}</h2>
     </header>
     <input 

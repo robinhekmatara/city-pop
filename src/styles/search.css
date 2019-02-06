@@ -4,10 +4,6 @@ form {
   align-items: center;
 }
 
-form header h2 {
-  margin: 1.25em 0;
-}
-
 form h2 {
   font-weight: 400;
   color: #333;
@@ -16,13 +12,13 @@ form h2 {
 form input {
   height: 3em;
   width: 60%;
-  border: .1em solid black;
+  border: .05em solid black;
 }
 
 form button {
   background-color: white;
-  width: 2.5em;
-  height: 2.5em;
+  width: 3em;
+  height: 3em;
   border-radius: 50%;
   border: .05em solid black;
   margin-top: .75em;

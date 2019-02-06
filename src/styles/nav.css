@@ -1,13 +1,12 @@
 nav {
-  margin-top: 2.5em;
+  margin-top: 3em;
 }
 
 nav ul {
   list-style: none;
-  display: flex;
-  justify-content: center;
+  text-align: center;
+  padding: 0;
   margin: 0;
-  padding: 0; 
 }
 
 nav a {
@@ -15,14 +14,17 @@ nav a {
   color: black;
 }
 
+nav li {
+  display: inline;
+}
+
 nav div {
   font-size: 1.5rem;
-  display: flex;
-  flex-direction: column;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
-  border: .07em solid black;
+  border: .05em solid black;
   width: 12em;
   height: 6em;
-  margin: .2em;
+  margin: 0 .2em;
 }

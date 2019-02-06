@@ -1,0 +1,12 @@
+#population {
+  border: 1px solid black;
+  width: 40%;
+  margin: 0 auto;
+  padding: 1em 0;
+  text-align: center;
+}
+
+#population-text {
+  font-size: 2.5em;
+  font-weight: 200;
+}

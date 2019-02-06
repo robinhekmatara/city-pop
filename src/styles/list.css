@@ -1,0 +1,21 @@
+#list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.list-item div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 40%;
+  height: 60px;
+  border: 1px solid black;
+  margin: .1em auto;
+}
+
+.list-item a {
+  color: black;
+  text-decoration: none;
+}
