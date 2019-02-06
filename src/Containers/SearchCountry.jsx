@@ -32,7 +32,11 @@ class SearchCountry extends Component {
     .then(list => firstMatchingCountry(list, country))
     .then(country => getCities(country.countryCode))
     .then(cities => filterTop3(cities, item => item.fcode.includes(CITY_CODE)))
-    .then(top3cities => this.setState({cities: top3cities}));
+    .then(top3cities => this.setState({cities: top3cities}))
+    .catch(e => {
+      this.setState({country: '', cities: null});
+      console.log(e);
+    });
   }
 
   render() {

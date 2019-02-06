@@ -28,7 +28,11 @@ class SearchCity extends Component {
     const { city } = this.state;
     getCity(city)
     .then(list => firstMatchingCity(list, city))
-    .then(city => this.setState({population: city.population}));
+    .then(city => this.setState({population: city.population}))
+    .catch(e => {
+      this.setState({city: '', population: null});
+      console.log(e);
+    });
   }
 
   render() {
