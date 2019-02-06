@@ -1,7 +1,10 @@
 import React, {Component} from 'react';
 import Search from '../Components/Search';
 import { Redirect } from 'react-router';
-import { BY_COUNTRY, ENTER_COUNTRY, COUNTRY_CODE, CITY_CODE } from '../Strings';
+import { getCountry, getCities } from '../api/api'; 
+import { firstMatchingCountry } from '../Utils/firstMatch';
+import { filterTop3 } from '../Utils/filter';
+import { BY_COUNTRY, ENTER_COUNTRY, CITY_CODE } from '../Strings';
 
 class SearchCountry extends Component {
   constructor(props) {
@@ -14,7 +17,6 @@ class SearchCountry extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.getCities = this.getCities.bind(this);
   }
 
   handleChange(event) {
@@ -23,19 +25,14 @@ class SearchCountry extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.getCities();
-  }
 
-  getCities() {
     const { country } = this.state;
-    fetch(`http://api.geonames.org/searchJSON?name=${country.toLowerCase()}&username=weknowit`)
-            .then(response => response.json())
-            .then(list => list.geonames.find(item => (item.name.toLowerCase()).includes(country.toLowerCase()) 
-                                                  && item.fcode.includes(COUNTRY_CODE)))
-            .then(country => fetch(`http://api.geonames.org/searchJSON?country=${country.countryCode}&username=weknowit`))
-            .then(response => response.json())
-            .then(cities => filterTop3(cities.geonames, item => item.fcode.includes(CITY_CODE)))
-            .then(top3cities => this.setState({cities: top3cities}));
+
+    getCountry(country)
+    .then(list => firstMatchingCountry(list, country))
+    .then(country => getCities(country.countryCode))
+    .then(cities => filterTop3(cities, item => item.fcode.includes(CITY_CODE)))
+    .then(top3cities => this.setState({cities: top3cities}));
   }
 
   render() {
@@ -61,17 +58,6 @@ class SearchCountry extends Component {
       />
     )
   }
-}
-
-const filterTop3 = (arr, filter) => {
-  let newArr = [];
-  for (let i = 0; i < arr.length && newArr.length < 3; i++) {
-    if (filter(arr[i])) {
-      newArr.push(arr[i]);
-    }
-  }
-
-  return newArr;
 }
 
 export default SearchCountry;

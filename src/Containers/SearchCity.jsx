@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import { Redirect } from 'react-router';
 import Search from '../Components/Search';
+import { getCity } from '../api/api';
+import { firstMatchingCity } from '../Utils/firstMatch';
 import { BY_CITY, ENTER_CITY } from '../Strings';
 
 class SearchCity extends Component {
@@ -14,7 +16,6 @@ class SearchCity extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.getCity = this.getCity.bind(this);
   }
 
   handleChange(event) {
@@ -23,15 +24,11 @@ class SearchCity extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.getCity();
-  }
 
-  getCity() {
     const { city } = this.state;
-    return fetch(`http://api.geonames.org/searchJSON?q=${city.toLowerCase()}&maxRows=1&username=weknowit`)
-            .then(response => response.json())
-            .then(city => this.setState({population: city.geonames[0].population}))
-            .catch(e => console.log(e));
+    getCity(city)
+    .then(list => firstMatchingCity(list, city))
+    .then(city => this.setState({population: city.population}));
   }
 
   render() {
