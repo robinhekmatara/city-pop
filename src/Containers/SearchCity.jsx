@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import {FaSearch} from 'react-icons/fa'
 import { Redirect } from 'react-router';
-import { BY_CITY } from '../Strings';
+import Search from '../Components/Search';
+import { BY_CITY, ENTER_CITY } from '../Strings';
 
 class SearchCity extends Component {
   constructor(props) {
@@ -38,7 +38,6 @@ class SearchCity extends Component {
     const { city, population } = this.state;
 
     if (population !== null) {
-      console.log(population);
       return <Redirect to={{
         pathname: `/population/${city}`,
         state: {population}
@@ -46,11 +45,14 @@ class SearchCity extends Component {
     }
 
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label htmlFor="city">{BY_CITY}</label>
-        <input type="text" id="city" onChange={this.handleChange} value={city}/>
-        <button type="submit"><FaSearch/></button>
-      </form>
+      <Search
+        id="city"
+        label={BY_CITY}
+        placeholder={ENTER_CITY}
+        value={city}
+        handleChange={this.handleChange}
+        handleSubmit={this.handleSubmit}
+      />
     )
   }
 }

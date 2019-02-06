@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import {FaSearch} from 'react-icons/fa'
 import { Link } from 'react-router-dom';
-import { BY_COUNTRY, COUNTRY_CODE, CITY_CODE } from '../Strings';
+import Search from './Search';
+import { BY_COUNTRY, ENTER_COUNTRY, COUNTRY_CODE, CITY_CODE } from '../Strings';
 
 class SearchCountry extends Component {
   constructor(props) {
@@ -59,11 +59,14 @@ class SearchCountry extends Component {
     }
 
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label htmlFor="country">{BY_COUNTRY}</label>
-        <input type="text" id="country" onChange={this.handleChange} value={country}/>
-        <button type="submit"><FaSearch/></button>
-      </form>
+      <Search
+        id="country"
+        label={BY_COUNTRY}
+        placeholder={ENTER_COUNTRY}
+        value={country}
+        handleChange={this.handleChange}
+        handleSubmit={this.handleSubmit}
+      />
     )
   }
 }

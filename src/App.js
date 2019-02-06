@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom'
 import {BY_CITY, BY_COUNTRY} from './Strings';
 import './App.css';
-import SearchCity from './Components/SearchCity';
+import SearchCity from './Containers/SearchCity';
 import SearchCountry from './Components/SearchCountry';
 import Population from './Components/Population';
 
