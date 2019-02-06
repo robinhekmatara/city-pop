@@ -11,7 +11,8 @@ class SearchCity extends Component {
 
     this.state = {
       city: '',
-      population: null
+      population: null,
+      loading: false
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -24,19 +25,19 @@ class SearchCity extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-
+    this.setState({loading: true});
     const { city } = this.state;
     getCity(city)
     .then(list => firstMatchingCity(list, city))
-    .then(city => this.setState({population: city.population}))
+    .then(city => this.setState({population: city.population, loading: false}))
     .catch(e => {
-      this.setState({city: '', population: null});
+      this.setState({city: '', population: null, loading: false});
       console.log(e);
     });
   }
 
   render() {
-    const { city, population } = this.state;
+    const { city, population, loading } = this.state;
     const { location } = this.props;
 
     if (population !== null) {
@@ -47,14 +48,17 @@ class SearchCity extends Component {
     }
 
     return (
-      <Search
-        id="city"
-        header={BY_CITY}
-        placeholder={ENTER_CITY}
-        value={city}
-        handleChange={this.handleChange}
-        handleSubmit={this.handleSubmit}
-      />
+      <div>
+        <Search
+          id="city"
+          header={BY_CITY}
+          placeholder={ENTER_CITY}
+          value={city}
+          loading={loading}
+          handleChange={this.handleChange}
+          handleSubmit={this.handleSubmit}
+        />
+      </div>
     )
   }
 }

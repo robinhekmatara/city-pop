@@ -12,7 +12,8 @@ class SearchCountry extends Component {
 
     this.state = {
       country: '',
-      cities: null
+      cities: null,
+      loading: false
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -25,6 +26,8 @@ class SearchCountry extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
+
+    this.setState({loading: true});
 
     const { country } = this.state;
 
@@ -40,15 +43,15 @@ class SearchCountry extends Component {
     .then(country => getCities(country.countryCode))
     .then(places => filterTop3(places.sort((a, b) => b.population - a.population),
                                             item  => item.fcode.includes(CITY_CODE)))
-    .then(top3cities => this.setState({cities: top3cities}))
+    .then(top3cities => this.setState({cities: top3cities, loading: false}))
     .catch(e => {
-      this.setState({country: '', cities: null});
+      this.setState({country: '', cities: null, loading: false});
       console.log(e);
     });
   }
 
   render() {
-    const { country, cities } = this.state;
+    const { country, cities, loading } = this.state;
     const { location } = this.props;
 
     if (cities !== null) {
@@ -66,6 +69,7 @@ class SearchCountry extends Component {
         header={BY_COUNTRY}
         placeholder={ENTER_COUNTRY}
         value={country}
+        loading={loading}
         handleChange={this.handleChange}
         handleSubmit={this.handleSubmit}
       />

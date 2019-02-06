@@ -1,0 +1,10 @@
+#loader {
+  margin-top: 20%;
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  #loader {
+    margin-top: 80%;
+  }
+}

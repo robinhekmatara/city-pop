@@ -1,8 +1,11 @@
 import React from 'react';
 import { FaSearch } from 'react-icons/fa';
+import Loading from './Loading';
 import '../styles/search.css';
 
-const Search = ({id, placeholder, header, value, handleChange, handleSubmit}) =>
+const Search = ({id, placeholder, header, value, loading, handleChange, handleSubmit}) =>
+  loading ?
+  <Loading loading={loading}/> :
   <form onSubmit={handleSubmit}>
     <header className="sub-header">
       <h2>{header}</h2>
@@ -15,6 +18,6 @@ const Search = ({id, placeholder, header, value, handleChange, handleSubmit}) =>
       onChange={handleChange}
       required/>
     <button type="submit"><FaSearch/></button>
-  </form>
+  </form>;
 
 export default Search;
