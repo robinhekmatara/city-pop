@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Search from '../Components/Search';
 import { Redirect } from 'react-router';
+import { toast } from 'react-toastify';
 import { getCountry, getCities } from '../api/api'; 
 import { firstMatchingCountry } from '../Utils/firstMatch';
 import { filterTop3 } from '../Utils/filter';
@@ -19,6 +20,7 @@ class SearchCountry extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.toastError = this.toastError.bind(this);
   }
 
   handleChange(event) {
@@ -49,10 +51,13 @@ class SearchCountry extends Component {
                                             item  => item.fcode.includes(CITY_CODE)))
     .then(top3cities => this.setState({cities: top3cities, loading: false}))
     .catch(e => {
+      this.toastError(searchTerm)
       this.setState({searchTerm: '', cities: null, loading: false});
       console.log(e);
     });
   }
+
+  toastError = (country) => toast.error(`We are sorry! We could not find the country, ${country}.  `);
 
   render() {
     const { searchTerm, country, cities, loading } = this.state;

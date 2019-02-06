@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { Redirect } from 'react-router';
+import { toast } from 'react-toastify';
 import Search from '../Components/Search';
 import { getCity } from '../api/api';
 import { firstMatchingCity } from '../Utils/firstMatch';
@@ -12,12 +13,12 @@ class SearchCity extends Component {
     this.state = {
       searchTerm: '',
       city: null,
-      population: null,
-      loading: false
+      loading: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.toastError = this.toastError.bind(this);
   }
 
   handleChange(event) {
@@ -30,21 +31,24 @@ class SearchCity extends Component {
     const { searchTerm } = this.state;
     getCity(searchTerm)
     .then(list => firstMatchingCity(list, searchTerm))
-    .then(city => this.setState({city, population: city.population, loading: false}))
+    .then(city => this.setState({city, loading: false}))
     .catch(e => {
-      this.setState({city: null, searchTerm: '', population: null, loading: false});
+      this.toastError(searchTerm);
+      this.setState({ searchTerm: '', city: null, loading: false});
       console.log(e);
     });
   }
 
+  toastError = (city) => toast.error(`We are sorry! We could not find the city, ${city}.  `);
+
   render() {
-    const { searchTerm, city, population, loading } = this.state;
+    const { searchTerm, city, loading } = this.state;
     const { location } = this.props;
 
-    if (population !== null) {
+    if (city !== null) {
       return <Redirect to={{
         pathname: `${location.pathname}/${city.name}`,
-        state: {population}
+        state: {population: city.population}
       }}/>;
     }
 
