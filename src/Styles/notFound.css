@@ -1,0 +1,35 @@
+#not-found header h2 {
+  font-size: 4rem;
+  font-weight: 300;
+  margin: .75em 0;
+}
+
+#not-found #error-message {
+  font-size: 1.5rem;
+  margin: .75em 0;
+}
+
+#not-found #error-code {
+  font-size: 1rem;
+}
+
+#not-found #error-message-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: stretch
+}
+
+#not-found #error-home {
+  margin: .75em 0;
+}
+
+#not-found a {
+  font-size: 2rem;
+  font-weight: 100;
+  color: purple;
+  text-decoration: none;
+}
+
+#not-found a:hover {
+  text-decoration: underline;
+}
