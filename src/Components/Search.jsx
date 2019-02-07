@@ -2,7 +2,7 @@ import React from 'react';
 import { FaSearch } from 'react-icons/fa';
 import { ToastContainer } from 'react-toastify';
 import Loading from './Loading';
-import '../styles/search.css';
+import '../Styles/search.css';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Search = ({id, placeholder, header, value, loading, handleChange, handleSubmit}) =>

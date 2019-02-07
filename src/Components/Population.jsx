@@ -1,6 +1,6 @@
 import React from 'react';
 import { capitalizeSentence, spaceEveryThree } from '../Utils/stringOperations'
-import '../styles/population.css';
+import '../Styles/population.css';
 
 const Population = ({location, match}) =>
   <div>

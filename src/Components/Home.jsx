@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { BY_CITY, BY_COUNTRY} from '../Strings';
-import '../styles/home.css';
+import '../Styles/home.css';
 
 const Home = () =>
   <div id="home">

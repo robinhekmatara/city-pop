@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { capitalizeSentence } from '../Utils/stringOperations'
-import '../styles/list.css';
+import '../Styles/list.css';
 
 const List = ({match, location}) =>
   <div>

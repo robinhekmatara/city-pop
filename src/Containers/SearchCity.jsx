@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import { Redirect } from 'react-router';
+import { Redirect } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Search from '../Components/Search';
-import { getCity } from '../api/api';
+import { getCity } from '../Api/api';
 import { firstMatchingCity } from '../Utils/firstMatch';
 import { BY_CITY, ENTER_CITY } from '../Strings';
 
@@ -32,10 +32,9 @@ class SearchCity extends Component {
     getCity(searchTerm)
     .then(list => firstMatchingCity(list, searchTerm))
     .then(city => city.name && this.setState({city, loading: false}))
-    .catch(e => {
+    .catch(() => {
       this.toastError(searchTerm);
       this.setState({ searchTerm: '', city: null, loading: false});
-      console.log(e);
     });
   }
 

@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import Search from '../Components/Search';
-import { Redirect } from 'react-router';
+import { Redirect } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { getCountry, getCities } from '../api/api'; 
+import { getCountry, getCities } from '../Api/api'; 
 import { firstMatchingCountry } from '../Utils/firstMatch';
 import { filterTop3 } from '../Utils/filter';
 import { BY_COUNTRY, ENTER_COUNTRY, CITY_CODE } from '../Strings';
@@ -50,10 +50,9 @@ class SearchCountry extends Component {
     .then(places => filterTop3(places.sort((a, b) => b.population - a.population),
                                             item  => item.fcode.includes(CITY_CODE)))
     .then(top3cities => this.setState({cities: top3cities, loading: false}))
-    .catch(e => {
+    .catch(() => {
       this.toastError(searchTerm)
       this.setState({searchTerm: '', cities: null, loading: false});
-      console.log(e);
     });
   }
 
