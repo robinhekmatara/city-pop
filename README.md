@@ -16,6 +16,10 @@ Install project dependencies
 $ npm install
 ```
 
+Start the app
+
 ```sc
 $ npm start
 ```
+
+Navigate to localhost:3000 in browser
