@@ -9,7 +9,6 @@ export const spaceEveryThree = (str) => {
   let first = len % 3;
 
   let newStr = str.substring(0, first);
-  console.log(newStr);
   for (let i = first; i < str.length; i+=3){
     newStr += ' ';
     newStr += str.substring(i, i + 3);

@@ -6,6 +6,6 @@ export const firstMatchingCountry = (list, country) => firstMatch(list, country,
 
 const firstMatch = (list, matchName, matchCode) => 
   list.find(item => 
-    ((item.name.toLowerCase()).includes(matchName.toLowerCase()) ||
-    item.countryName.toLowerCase().includes(matchName.toLowerCase())) &&
+    ((item.name.toLowerCase() === matchName.toLowerCase()) ||
+    item.countryName.toLowerCase() === matchName.toLowerCase()) &&
     item.fcode.includes(matchCode));
