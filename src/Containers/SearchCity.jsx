@@ -31,7 +31,7 @@ class SearchCity extends Component {
     const { searchTerm } = this.state;
     getCity(searchTerm)
     .then(list => firstMatchingCity(list, searchTerm))
-    .then(city => this.setState({city, loading: false}))
+    .then(city => city.name && this.setState({city, loading: false}))
     .catch(e => {
       this.toastError(searchTerm);
       this.setState({ searchTerm: '', city: null, loading: false});
