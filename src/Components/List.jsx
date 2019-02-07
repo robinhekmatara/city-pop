@@ -15,9 +15,7 @@ const List = ({match, location}) =>
               pathname: `${location.pathname}/${item.name}`,
               state: {population: item.population}
             }}>
-              <div>
-                {item.name}
-              </div>
+              <div className="list-item-name">{item.name}</div>
             </Link>
           </div>
         )}

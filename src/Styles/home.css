@@ -29,6 +29,10 @@
   margin: 0 .2em;
 }
 
+#home div:hover {
+  box-shadow: 0 0 .1em rgba(10, 10, 10, 1);
+}
+
 @media (max-width: 995px) {
   #home div {
     margin: .2em 0;
