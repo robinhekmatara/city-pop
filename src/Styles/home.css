@@ -14,11 +14,11 @@
   color: black;
 }
 
-#home li {
+#home .list-item {
   display: inline;
 }
 
-#home div {
+#home .list-item-box {
   font-size: 1.5rem;
   display: inline-flex;
   justify-content: center;
@@ -29,12 +29,12 @@
   margin: 0 .2em;
 }
 
-#home div:hover {
+#home .list-item-box:hover {
   box-shadow: 0 0 .1em rgba(10, 10, 10, 1);
 }
 
 @media (max-width: 995px) {
-  #home div {
+  #home .list-item-box {
     margin: .2em 0;
   }
 }

@@ -6,14 +6,14 @@ import '../Styles/home.css';
 const Home = () =>
   <div id="home">
     <ul>
-      <li>
+      <li className="list-item">
         <Link to='/search_by_city'>
-          <div>{BY_CITY}</div>
+          <div className="list-item-box">{BY_CITY}</div>
         </Link>
       </li>
-      <li>
+      <li className="list-item">
         <Link to='/search_by_country'>
-          <div>{BY_COUNTRY}</div>
+          <div className="list-item-box">{BY_COUNTRY}</div>
         </Link>
       </li>
     </ul>
