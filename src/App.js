@@ -8,13 +8,14 @@ import List from './Components/List';
 import Header from './Components/Header';
 import Home from './Components/Home';
 import NotFound from './Components/NotFound';
+import { PAGE_HEADER } from './Strings';
 
 class App extends Component {
   render() {
     return (
       <Router>
         <div>
-          <Header>CityPop</Header>
+          <Header>{PAGE_HEADER}</Header>
           <main>
             <Switch>
               <Route path="/search_by_city/:city" render={props => <Population {...props}/>}/>
