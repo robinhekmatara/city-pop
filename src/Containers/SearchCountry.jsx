@@ -64,7 +64,7 @@ class SearchCountry extends Component {
 
     if (cities !== null) {
       return (
-        <Redirect to={{
+        <Redirect push to={{
           pathname: `${location.pathname}/${country.name}`,
           state: {cities}
         }}/>

@@ -45,7 +45,7 @@ class SearchCity extends Component {
     const { location } = this.props;
 
     if (city !== null) {
-      return <Redirect to={{
+      return <Redirect push to={{
         pathname: `${location.pathname}/${city.name}`,
         state: {population: city.population}
       }}/>;
