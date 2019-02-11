@@ -1,9 +1,6 @@
 import React, {Component} from 'react';
 import { Redirect } from 'react-router-dom';
-import { toast } from 'react-toastify';
 import Search from '../Components/Search';
-import { getCity } from '../Api/api';
-import { firstMatchingCity } from '../Utils/firstMatch';
 import { BY_CITY, ENTER_CITY } from '../Strings';
 
 class SearchCity extends Component {
@@ -12,13 +9,11 @@ class SearchCity extends Component {
 
     this.state = {
       searchTerm: '',
-      city: null,
-      loading: false,
+      searched: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.toastError = this.toastError.bind(this);
   }
 
   handleChange(event) {
@@ -27,42 +22,26 @@ class SearchCity extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.setState({loading: true});
-    const { searchTerm } = this.state;
-    getCity(searchTerm)
-    .then(list => firstMatchingCity(list, searchTerm))
-    .then(city => city.name && this.setState({city, loading: false}))
-    .catch(() => {
-      this.toastError(searchTerm);
-      this.setState({ searchTerm: '', city: null, loading: false});
-    });
+    this.setState({searched: true});
   }
 
-  toastError = (city) => toast.error(`We are sorry! We could not find the city, ${city}.  `);
-
   render() {
-    const { searchTerm, city, loading } = this.state;
+    const { searchTerm, searched } = this.state;
     const { location } = this.props;
 
-    if (city !== null) {
-      return <Redirect push to={{
-        pathname: `${location.pathname}/${city.name}`,
-        state: {population: city.population}
-      }}/>;
+    if (searched) {
+      return <Redirect push to={`${location.pathname}/${searchTerm}`}/>
     }
 
     return (
-      <div>
-        <Search
-          id="city"
-          header={BY_CITY}
-          placeholder={ENTER_CITY}
-          value={searchTerm}
-          loading={loading}
-          handleChange={this.handleChange}
-          handleSubmit={this.handleSubmit}
-        />
-      </div>
+      <Search
+        id="city"
+        header={BY_CITY}
+        placeholder={ENTER_CITY}
+        value={searchTerm}
+        handleChange={this.handleChange}
+        handleSubmit={this.handleSubmit}
+      />
     )
   }
 }
